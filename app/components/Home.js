@@ -1,16 +1,19 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
+//var GetCityContainer = require('../containers/GetCityContainer');
 
 var styles = {
   container: {
-  backgroundSize: 'cover',
-  backgroundImage: "url('app/images/pattern.svg')",
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-  width: '100%'
-},
+    backgroundSize: 'cover',
+    //backgroundImage: "url('app/images/pattern.svg')",
+    backgroundColor: '#000364',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%'
+  },
   header: {
     fontSize: 45,
     color: '#fff',
@@ -18,11 +21,11 @@ var styles = {
   },
 }
 
-function Home(props){
+function Home (props) {
   return (
     <div style={styles.container}>
       <h1 style={styles.header}>Enter a City and State</h1>
-      <h1>Lorem ipsum</h1>
+
     </div>
   )
 }
