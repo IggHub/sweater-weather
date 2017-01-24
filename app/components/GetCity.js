@@ -7,8 +7,7 @@ function Button(props){
       type='button'
       className='btn btn-success'
       style={{margin: 10}}
-      onClick={props.onSubmitCity}
-      >
+      onClick={props.onSubmitCity}>
       {props.children}
     </button>
   )
@@ -21,8 +20,7 @@ function InputField(props){
         className='form-control'
         placeholder="Riverside, CA"
         onChange={props.onUpdateCity}
-        value={props.city}
-      />
+        value={props.city} />
     )
 }
 
@@ -45,8 +43,7 @@ function GetCity(props){
         city={props.city}
       />
       <Button
-        onSubmitCity={props.onSubmitCity}
-      >
+        onSubmitCity={props.onSubmitCity}>
         Search Weather
       </Button>
     </div>

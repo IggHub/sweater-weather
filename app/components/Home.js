@@ -4,8 +4,8 @@ var GetCityContainer = require('../containers/GetCityContainer');
 var styles = {
   container: {
     backgroundSize: 'cover',
-    //backgroundImage: "url('app/images/pattern.svg')",
-    backgroundColor: '#000364',
+    backgroundImage: "url('app/images/pattern.svg')",
+    //backgroundColor: '#000364',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

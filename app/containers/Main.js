@@ -21,11 +21,14 @@ var Main = React.createClass({
   render: function () {
     return (
       <div style={styles.container}>
+
         <div style={styles.header}>
           <h1>Main.js Header</h1>
           <GetCityContainer direction={'row'}/>
         </div>
+
         {this.props.children}
+
       </div>
     )
   }
