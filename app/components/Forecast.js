@@ -2,7 +2,7 @@ var React = require('react');
 
 function Forecast (props) {
   return (
-    <div>Forecase Component</div>
+    <div>Forecast Component</div>
   )
 }
 
