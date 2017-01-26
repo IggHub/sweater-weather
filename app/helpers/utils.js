@@ -24,11 +24,11 @@ var monthsMap = {
 };
 
 var convertTemp = function(kelvin){
-  return ((kelvin - 273.5) * 9 / 5 + 32
+  return ((kelvin - 273.5) * 9 / 5) + 32
 };
 
 var getDate = function(unixTimeStamp){
-  var date = new Date(unixTimeStamp);
+  var date = new Date(unixTimeStamp * 1000);
   var day = daysMap[date.getDay()];
   var month = monthsMap[date.getMonth()] + ' ' + date.getDate();
   return day + ', ' + month;
