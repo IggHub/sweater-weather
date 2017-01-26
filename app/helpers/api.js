@@ -3,6 +3,7 @@ var axios = require('axios');
 var _baseURL = 'http://api.openweathermap.org/data/2.5/';
 var _APIKEY = 'ad4277ae64747c9a384557d6b833efb2';
 
+
 function prepRouteParams (queryStringData) {
   return Object.keys(queryStringData)
     .map(function (key) {
@@ -29,21 +30,21 @@ function getCurrentWeather (city) {
 
   return axios.get(url)
     .then(function (currentWeatherData) {
-      console.log(currentWeatherData.data)
+      return currentWeatherData.data
     })
 }
 
-function getForecast (city) {
+function getForcast (city) {
   var queryStringData = getQueryStringData(city);
   var url = prepUrl('forecast/daily', queryStringData)
 
   return axios.get(url)
     .then(function (forecastData) {
-      console.log(forecastData.data)
+      return forecastData.data
     })
 }
 
 module.exports = {
-  getCurrentWeatherData: getCurrentWeather,
-  getForecastData: getForecast
+  getCurrentWeather: getCurrentWeather,
+  getForcast: getForcast
 };

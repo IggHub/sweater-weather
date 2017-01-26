@@ -1,48 +1,43 @@
+
 var React = require('react');
-var GetCity = require('../components/GetCity');
 var PropTypes = React.PropTypes;
-var getCurrentWeatherData = require('../helpers/api').getCurrentWeatherData;
-var getForecastData = require('../helpers/api').getForecastData;
+var GetCity = require('../components/GetCity');
 
 var GetCityContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getDefaultProps: function(){
+  getDefaultProps: function () {
     return {
       direction: 'column'
     }
   },
-  PropTypes: {
+  propTypes: {
     direction: PropTypes.string
   },
-  getInitialState: function(){
+  getInitialState: function () {
     return {
       city: ''
     }
   },
-  handleSubmitCity: function(e){
-    e.preventDefault();
-    //console.log(this.state.city);
-    getForecastData(this.state.city);
+  handleSubmitCity: function (e) {
+    e.preventDefault()
     this.context.router.push('/forecast/' + this.state.city)
-
   },
-  handleUpdateCity: function(e){
+  handleUpdateCity: function (e) {
     this.setState({
       city: e.target.value
     })
   },
-  render: function(){
+  render: function () {
     return (
       <GetCity
+        direction={this.props.direction}
         onSubmitCity={this.handleSubmitCity}
         onUpdateCity={this.handleUpdateCity}
-        direction={this.props.direction}
-        city={this.state.city}
-      />
+        city={this.state.city} />
     )
   }
-})
+});
 
 module.exports = GetCityContainer;

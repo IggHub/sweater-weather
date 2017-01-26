@@ -1,25 +1,35 @@
 var React = require('react');
 var Forecast = require('../components/Forecast');
-var getForecast = require('../helpers/api').getForecastData;
+var getForcast = require('../helpers/api').getForcast;
 
 var ForecastContainer = React.createClass({
-  getInitialState: function(){
+  getInitialState: function () {
     return {
-      isLoading: true
+      isLoading: true,
+      forecastData: {}
     }
   },
-  componentDidMount: function(){
-    console.log("ForecastContainer");
-    getForecast(this.props.city)
-      .then(function(){
+  componentDidMount: function () {
+    this.makeRequest(this.props.routeParams.city)
+  },
+  componentWillReceiveProps: function (nextProps) {
+    this.makeRequest(nextProps.routeParams.city)
+  },
+  makeRequest: function (city) {
+    getForcast(city)
+      .then(function (forecastData) {
         this.setState({
-          isLoading: false
-        })
-      }.bind(this))
+          isLoading: false,
+          forecastData: forecastData
+        });
+      }.bind(this));
   },
   render: function () {
     return (
-      <Forecast isLoading={this.state.isLoading}/>
+      <Forecast
+        city={this.props.routeParams.city}
+        isLoading={this.state.isLoading}
+        forecastData={this.state.forecastData} />
     )
   }
 });
