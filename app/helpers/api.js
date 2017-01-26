@@ -1,5 +1,4 @@
 var axios = require('axios');
-
 var _baseURL = 'http://api.openweathermap.org/data/2.5/';
 var _APIKEY = 'ad4277ae64747c9a384557d6b833efb2';
 
