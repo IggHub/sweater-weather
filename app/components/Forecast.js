@@ -1,13 +1,14 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var Loading = require('./Loading');
-var getDate = require('../helpers/utils').getDate;
-var convertTemp = require('../helpers/utils').convertTemp;
+var utils = require('../helpers/utils');
+var getDate = utils.getDate;
+var convertTemp = utils.convertTemp;
 
 var styles = {
   container: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
     maxWidth: 1200,
@@ -17,15 +18,18 @@ var styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: 35
   },
   header: {
     fontSize: 65,
     color: '#333',
     fontWeight: 100,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 50,
+    marginBottom: 30,
   },
-  subHeader: {
+  subheader: {
     fontSize: 30,
     color: '#333',
     fontWeight: 100
@@ -38,9 +42,8 @@ var styles = {
 function DayItem (props) {
   var date = getDate(props.day.dt);
   var icon = props.day.weather[0].icon;
-  console.log('date', props.day);
   return (
-    <div style={styles.dayContainer}>
+    <div style={styles.dayContainer} onClick={props.handleClick}>
       <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
       <h2 style={styles.subheader}>{date}</h2>
     </div>
@@ -48,20 +51,18 @@ function DayItem (props) {
 }
 
 function ForecastUI (props) {
-  //console.log('forecast', props.forecast);
   return (
-    <div>
+    <div style={{textAlign: 'center'}}>
       <h1 style={styles.header}>{props.city}</h1>
+      <p style={styles.subheader}>Select a day</p>
       <div style={styles.container}>
         {props.forecast.list.map(function (listItem) {
-          //console.log('listItem', listItem.dt);
-          return <DayItem key={listItem.dt} day={listItem} />
+          return <DayItem key={listItem.dt} day={listItem} handleClick={props.handleClick.bind(null, listItem)} />
         })}
       </div>
     </div>
   )
 }
-
 
 function Forecast (props) {
   return (
@@ -69,16 +70,20 @@ function Forecast (props) {
       {
         props.isLoading === true
           ? <h1 style={styles.header}> Loading </h1>
-          : <ForecastUI city={props.city} forecast={props.forecastData} />
+          : <ForecastUI
+              city={props.city}
+              forecast={props.forecastData}
+              handleClick={props.handleClick} />
       }
     </div>
   )
 }
 
-
-module.exports = Forecast;
-Forecast.PropTypes = {
+Forecast.propTypes = {
   city: PropTypes.string.isRequired,
   forecastData: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired
 }
+
+module.exports = Forecast;

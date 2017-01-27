@@ -7,6 +7,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 var Main = require('../containers/Main');
 var HomeContainer = require('../containers/HomeContainer');
 var ForecastContainer = require('../containers/ForecastContainer');
+var DetailContainer = require('../containers/DetailContainer');
 var Loading = require('../components/Loading');
 
 var routes = (
@@ -14,6 +15,7 @@ var routes = (
     <Route path='/' component={Main}>
       <IndexRoute component={HomeContainer} />
       <Route path='forecast/:city' component={ForecastContainer} />
+      <Route path='detail/:city' component={DetailContainer} />
       <Route path='loading' component={Loading} />
     </Route>
   </Router>
