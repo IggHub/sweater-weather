@@ -42,13 +42,14 @@ function Detail (props) {
   console.log('city', props.city)
   var icon = props.weather.weather[0].icon;
   return (
-    <div>
-      <p>City: {props.city}</p>
-      <p>Humidity: {props.weather.humidity}</p>
-      <p>Min T: {ConvertTemp(props.weather.temp.min)}</p>
-      <p>Max T: {ConvertTemp(props.weather.temp.max)}</p>
-      <p>{props.weather.weather[0].description}</p>
-      <img src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
+    <div style={styles.dayContainer}>
+      <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
+      <h2 style={styles.subheader}>{props.city}</h2>
+      <h2 style={styles.subheader}>{props.weather.weather[0].description}</h2>
+      <h2 style={styles.subheader}>Min Temp: {ConvertTemp(props.weather.temp.min)} degrees</h2>
+      <h2 style={styles.subheader}>Max Temp: {ConvertTemp(props.weather.temp.max)} degrees</h2>
+      <h2 style={styles.subheader}>Humidity: {props.weather.humidity}</h2>
+
     </div>
   )
 }

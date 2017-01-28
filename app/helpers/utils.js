@@ -24,7 +24,7 @@ var monthsMap = {
 };
 
 var convertTemp = function(kelvin){
-  return ((kelvin - 273.5) * 9 / 5) + 32
+  return Math.round(((kelvin - 273.5) * 9 / 5) + 32)
 };
 
 var getDate = function(unixTimeStamp){
