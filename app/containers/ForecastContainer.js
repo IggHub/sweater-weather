@@ -1,7 +1,7 @@
 var React = require('react');
 var Forecast = require('../components/Forecast');
 var getForcast = require('../helpers/api').getForcast;
-
+var getCurrentWeather = require('../helpers/api').getCurrentWeather;
 var ForecastContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
