@@ -23,8 +23,13 @@ var monthsMap = {
   "11":"Dec"
 };
 
+//converts to F
 var convertTemp = function(kelvin){
   return Math.round(((kelvin - 273.5) * 9 / 5) + 32)
+};
+
+var avgTemp = function(maxTemp, minTemp){
+  return Math.round((maxTemp + minTemp)/2)
 };
 
 var getDate = function(unixTimeStamp){
@@ -36,5 +41,6 @@ var getDate = function(unixTimeStamp){
 
 module.exports = {
   getDate: getDate,
-  convertTemp: convertTemp
+  convertTemp: convertTemp,
+  avgTemp: avgTemp
 }
