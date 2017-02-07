@@ -2,13 +2,19 @@ var React = require('react')
 
 function SweaterWeather(props){
   return (
-    <div>Sweater Weather</div>
+    <div>
+      <h1>Sweater Weather</h1>
+      <p>{props.temp} degrees</p>
+    </div>
   )
 }
 
 function NoSweaterWeather(props){
   return (
-    <div>NO Sweater Weather</div>
+    <div>
+      <h1>NO Sweater Weather</h1>
+      <p>{props.temp} degrees</p>
+    </div>
   )
 }
 
